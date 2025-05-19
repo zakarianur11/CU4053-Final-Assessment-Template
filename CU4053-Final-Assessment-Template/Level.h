@@ -9,10 +9,14 @@
 #include "Framework/AudioManager.h"
 #include <string>
 #include <iostream>
+#include "Mario.h"
+#include "Goomba.h"
 
-class Level : public BaseLevel{
+
+
+class Level : public BaseLevel {
 public:
-	Level(sf::RenderWindow* hwnd, Input* in, GameState* gs,sf::View* view ,World* w, TileManager* tm);
+	Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, sf::View* view, World* w, TileManager* tm);
 	~Level();
 
 	void handleInput(float dt) override;
@@ -21,4 +25,16 @@ public:
 	void adjustViewToWindowSize(unsigned int width, unsigned int height);
 private:
 	// Default variables for level class.
+
+	static const int numberOfGoombas = 10;
+	Mario mario;
+	Goomba goombaArray[numberOfGoombas];
+	sf::Text CollectableCollected;
+	sf::Sprite CollectablesUI;
+	sf::Font font;
+	sf::Texture CollectablesUITex;
+	sf::Texture level_texture;
+	sf::Texture cloud;
+	sf::Sprite cloudSprite;
+
 };
